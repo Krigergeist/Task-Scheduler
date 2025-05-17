@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+
+    <title>Task Scheduler</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <div class="container">
+      <h1>Task Scheduler</h1>
+
+      <!-- ====== LANGUAGE & DARK MODE TOGGLE ====== -->
+      <div
+        style="
+          display: flex;
+          justify-content: flex-end;
+          gap: 1rem;
+          margin-bottom: 1rem;
+        "
+      >
+        <select
+          id="langSelect"
+          style="padding: 0.3rem 1rem; border-radius: 5px"
+        >
+          <option value="id">🇮🇩 Indonesia</option>
+          <option value="en">🇬🇧 English</option>
+        </select>
+        <button
+          id="darkModeToggle"
+          title="Toggle Dark Mode"
+          style="padding: 0.3rem 1rem; border-radius: 5px"
+        >
+          🌙
+        </button>
+      </div>
+
+      <div class="container2">
+        <div id="taskForm">
+          <label>Nama Task:</label>
+          <input type="text" id="taskName" placeholder="Nama Task" />
+
+          <div class="set">
+            <div class="set_time">
+              <label>Jam:</label>
+              <input type="number" id="hours" min="0" value="0" />
+            </div>
+            <div class="set_time">
+              <label>Menit:</label>
+              <input type="number" id="minutes" min="0" value="0" />
+            </div>
+            <div class="set_time">
+              <label>Detik:</label>
+              <input type="number" id="seconds" min="0" value="5" />
+            </div>
+          </div>
+          <label>Pilih Audio:</label>
+          <div class="radio-group">
+            <label
+              ><input type="radio" name="audioType" value="default" checked />
+              Default</label
+            >
+            <label
+              ><input type="radio" name="audioType" value="custom" />
+              Custom</label
+            >
+          </div>
+          <label id="repeatLabel">Pengulangan:</label>
+          <select id="repeatType">
+            <option value="none">Tidak</option>
+            <option value="limited">Repeat Terbatas</option>
+            <option value="unlimited">Repeat Tanpa Batas</option>
+          </select>
+
+          <div id="repeatCountContainer" style="display: none">
+            <label>Jumlah Ulang:</label>
+            <input type="number" id="repeatCount" min="1" value="1" />
+          </div>
+
+          <br />
+
+          <button id="addTaskBtn">Tambah Task</button>
+        </div>
+
+        <div class="taskList1">
+          <label>Daftar Task :</label>
+          <div class="taskList2">
+            <ul id="taskList"></ul>
+            <div
+              id="emptyTaskMsg"
+              style="
+                text-align: center;
+                color: #888;
+                margin-top: 2rem;
+                font-size: 1.1em;
+                display: none;
+              "
+            >
+              Belum ada task yang dimasukkan.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="startAllBtn">Mulai Semua Task</button>
+      <button id="stopAllBtn">Stop</button>
+
+      <p id="status">Status: Menunggu...</p>
+
+      <div id="progressContainer" style="display: none">
+        <div id="progressBar"></div>
+      </div>
+    </div>
+
+    <audio id="audioPlayer" src="audio/default.ogg"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+    <script src="js/sortable-init.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
